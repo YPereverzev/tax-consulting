@@ -1,6 +1,9 @@
 import type { NextConfig } from "next";
 
 const isGithubPages = process.env.GITHUB_PAGES === "true";
+const pagesBasePath =
+  process.env.PAGES_BASE_PATH ||
+  (isGithubPages ? "/tax-consulting" : "");
 
 const securityHeaders = [
   { key: "X-Content-Type-Options", value: "nosniff" },
@@ -23,6 +26,7 @@ const nextConfig: NextConfig = {
     ? {
         output: "export" as const,
         images: { unoptimized: true },
+        ...(pagesBasePath ? { basePath: pagesBasePath } : {}),
       }
     : {
         async headers() {
