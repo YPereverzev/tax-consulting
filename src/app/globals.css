@@ -1,0 +1,61 @@
+@import "tailwindcss";
+
+:root {
+  --paper: #f4efe6;
+  --ink: #1c1915;
+  --ink-muted: #5c564c;
+  --forest: #1f4d3a;
+  --forest-hover: #16382a;
+  --copper: #b45a32;
+  --line: #d9d0c3;
+}
+
+@theme inline {
+  --color-paper: var(--paper);
+  --color-ink: var(--ink);
+  --color-ink-muted: var(--ink-muted);
+  --color-forest: var(--forest);
+  --color-forest-hover: var(--forest-hover);
+  --color-copper: var(--copper);
+  --color-line: var(--line);
+  --font-sans: var(--font-manrope);
+  --font-serif: var(--font-literata);
+}
+
+html {
+  color-scheme: light;
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+}
+
+:focus-visible {
+  outline: 2px solid var(--copper);
+  outline-offset: 3px;
+}
+
+::selection {
+  background: var(--forest);
+  color: var(--paper);
+}
+
+summary::-webkit-details-marker {
+  display: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
